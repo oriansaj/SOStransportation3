@@ -25,4 +25,10 @@ public class SelectionScreen extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /** Called when the user taps the Purchase button */
+    public void purchase(View view) {
+        Intent intent = new Intent(this, PurchaseScreen.class);
+        startActivity(intent);
+    }
 }

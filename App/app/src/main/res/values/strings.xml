@@ -8,4 +8,16 @@
     <string name="button_reserve">Reserve a spot</string>
     <string name="button_purchase">Purchase a ticket</string>
     <string name="button_logout">Logout</string>
+    <string name="text_notes">Notes</string>
+    <string name="text_address">Stop Address</string>
+    <string name="button_reserve_now">Reserve Now</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="password_confirm">Confirm Password</string>
+    <string name="text_firstname">First Name</string>
+    <string name="text_lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="button_create">Create Account</string>
+    <string name="button_buy">Buy Now</string>
 </resources>
