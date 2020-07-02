@@ -19,4 +19,10 @@ public class GuestScreen extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /** Called when the user taps the Yes button */
+    public void yes(View view) {
+        Intent intent = new Intent(this, PurchaseScreen.class);
+        startActivity(intent);
+    }
 }
