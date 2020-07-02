@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /** Called when the user taps the Send button */
+    /** Called when the user taps the Login button */
     public void login(View view) {
         Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
