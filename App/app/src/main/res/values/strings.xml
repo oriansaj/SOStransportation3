@@ -20,4 +20,39 @@
     <string name="phone">Phone</string>
     <string name="button_create">Create Account</string>
     <string name="button_buy">Buy Now</string>
+    <string-array name="route_dropdown">
+        <item>Select Route</item>
+        <item>2: East 34th St</item>
+        <item>3: Michigan Street</item>
+        <item>4: Fort Harrison</item>
+        <item>5: East 25th St</item>
+        <item>6: Harding</item>
+        <item>8: Washington</item>
+        <item>10: 10th Street</item>
+        <item>11: East 16th St</item>
+        <item>12: Minnesota</item>
+        <item>13: Raymond Street</item>
+        <item>14: Prospect</item>
+        <item>15: West 34th St</item>
+        <item>16: Beech Grove</item>
+        <item>18: Broad Ripple</item>
+        <item>19: Castleton</item>
+        <item>21: East 21st St</item>
+        <item>24: Mars Hill</item>
+        <item>25: West 16th St</item>
+        <item>26: Keystone Crosstown</item>
+        <item>28: St.Vincent</item>
+        <item>30: 30th Street Crosstown</item>
+        <item>31: Madison</item>
+        <item>34: ML King/Michigan Rd</item>
+        <item>37: Park 100</item>
+        <item>38: West 38th St</item>
+        <item>39: East 38th St</item>
+        <item>55: English</item>
+        <item>86: 86th St Crosstown</item>
+        <item>87: Eastside Circulator</item>
+        <item>90: Red Line</item>
+        <item>901: Route 90 - 91st Street Extension</item>
+        <item>902: Route 90 - Greenwood Extension</item>
+    </string-array>
 </resources>
