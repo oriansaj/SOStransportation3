@@ -52,7 +52,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 
     /** Called when the user taps the Reserve button */
     public void reserve(View view) {
-        sendRequest("127.0.0.1",5000);
+        sendRequest("127.0.0.1", 5000);
     }
 
     //Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
@@ -63,7 +63,6 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
      * @param port
      */
     public void sendRequest(String address, int port) {
-        System.out.println("called");
         Socket socket = null;
         DataOutputStream dataOut = null;
 
@@ -72,8 +71,8 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
             socket = new Socket(address, port);
 
             // sends output to the socket
-            dataOut    = new DataOutputStream(socket.getOutputStream());
-        } catch(Exception e) {System.out.println("Failed to connect");}
+            dataOut = new DataOutputStream(socket.getOutputStream());
+        } catch(Exception e) {System.out.println(e);}
 
         try {
             dataOut.writeUTF("test");
