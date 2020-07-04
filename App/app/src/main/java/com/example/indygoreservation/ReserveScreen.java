@@ -2,12 +2,15 @@ package com.example.indygoreservation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+import java.net.*;
+import java.io.*;
 
 public class ReserveScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -45,5 +48,42 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         adapterView.getItemAtPosition(1);
+    }
+
+    /** Called when the user taps the Reserve button */
+    public void reserve(View view) {
+        sendRequest("127.0.0.1",5000);
+    }
+
+    //Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
+
+    /**
+     * Sends a string (eventually the data of the reservation) to the server
+     * @param address
+     * @param port
+     */
+    public void sendRequest(String address, int port) {
+        System.out.println("called");
+        Socket socket = null;
+        DataOutputStream dataOut = null;
+
+        // establish a connection
+        try {
+            socket = new Socket(address, port);
+
+            // sends output to the socket
+            dataOut    = new DataOutputStream(socket.getOutputStream());
+        } catch(Exception e) {System.out.println("Failed to connect");}
+
+        try {
+            dataOut.writeUTF("test");
+            System.out.println("Sent");
+        } catch(Exception e) {System.out.println("Failed to send");}
+
+        // close the connection
+        try {
+            dataOut.close();
+            socket.close();
+        } catch(Exception e) {System.out.println("Failed to close");}
     }
 }
