@@ -56,7 +56,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
             @Override
             public void run() {
                 try  {
-                    sendRequest("10.0.0.159", 5000);
+                    sendRequest("10.0.2.2", 5000);
                 } catch (Exception e) {
                     System.out.println("In button: " + e);
                 }
@@ -86,7 +86,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 
         try {
             dataOut.writeUTF("test");
-            System.out.println("Sent");
+            //System.out.println("Sent");
         } catch(Exception e) {System.out.println("Failed to send");}
 
         // close the connection
