@@ -85,8 +85,9 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
         } catch(Exception e) {System.out.println("In connect: " + e);}
 
         try {
-            dataOut.writeUTF("test");
-            //System.out.println("Sent");
+            dataOut.writeUTF("Andrew");
+            dataOut.writeUTF("Orians");
+            dataOut.writeUTF("andrew@example.com");
         } catch(Exception e) {System.out.println("Failed to send");}
 
         // close the connection
