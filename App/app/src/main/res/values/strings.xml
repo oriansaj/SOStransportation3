@@ -4,7 +4,7 @@
     <string name="password">Password</string>
     <string name="button_login">Login</string>
     <string name="button_new_acct">Create Account</string>
-    <string name="button_guest">Guest</string>
+    <string name="button_one_time_purchase">One Time Ticket Purchase</string>
     <string name="button_reserve">Reserve a spot</string>
     <string name="button_purchase">Purchase a ticket</string>
     <string name="button_logout">Logout</string>

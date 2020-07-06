@@ -18,7 +18,7 @@
             android:name=".NewAccount"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".GuestScreen"
+            android:name=".OneTimePurchaseScreen"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ReserveScreen"

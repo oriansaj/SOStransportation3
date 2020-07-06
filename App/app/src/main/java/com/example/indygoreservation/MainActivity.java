@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Called when the user taps the Guest button */
-    public void guest(View view) {
-        Intent intent = new Intent(this, GuestScreen.class);
+    public void oneTimePurchase(View view) {
+        Intent intent = new Intent(this, OneTimePurchaseScreen.class);
         startActivity(intent);
     }
 
