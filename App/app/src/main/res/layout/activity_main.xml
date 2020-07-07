@@ -41,8 +41,10 @@
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="35dp"
         android:onClick="login"
         android:text="@string/button_login"
@@ -54,34 +56,34 @@
     <Button
         android:id="@+id/button3"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:onClick="create"
         android:text="@string/button_new_acct"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <Button
         android:id="@+id/button2"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="215dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="372dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:onClick="oneTimePurchase"
         android:text="@string/button_one_time_purchase"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
