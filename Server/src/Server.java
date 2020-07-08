@@ -31,10 +31,8 @@ public class Server {
 				in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
 				try {
-					for (int i = 0; i < 5; i++) {
-						String line = in.readUTF();
-						System.out.println(line);
-					}
+					Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
+							in.readUTF());
 				} catch (IOException i) {
 					System.out.println(i);
 				}
