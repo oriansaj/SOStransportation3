@@ -12,8 +12,8 @@ public class Reservation {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.startTime = LocalTime.parse(startTime);
-		this.endTime = LocalTime.parse(endTime);
+		this.startTime = LocalTime.parse(startTime).minusHours(-4);
+		this.endTime = LocalTime.parse(endTime).minusHours(-4);
 
 		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nStart: "
 				+ this.startTime.toString() + "\nEnd: " + this.endTime.toString());
