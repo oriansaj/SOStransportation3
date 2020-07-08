@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import java.net.*;
@@ -52,11 +53,17 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 
 	/** Called when the user taps the Reserve button */
 	public void reserve(View view) {
+		EditText startEnter = (EditText) findViewById(R.id.editTextTime);
+		final String startTime = startEnter.getText().toString(); //There's probably an issue with making this final, but it works
+
+		EditText stopEnter = (EditText) findViewById(R.id.editTextTime2);
+		final String stopTime = stopEnter.getText().toString();
+
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try  {
-					sendRequest("10.0.2.2", 5000);
+					sendRequest("10.0.2.2", 5000, startTime, stopTime);
 				} catch (Exception e) {
 					System.out.println("In button: " + e);
 				}
@@ -72,7 +79,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 	 * @param address
 	 * @param port
 	 */
-	public void sendRequest(String address, int port) {
+	public void sendRequest(String address, int port, String startTime, String endTime) {
 		Socket socket = null;
 		DataOutputStream dataOut = null;
 
@@ -88,6 +95,8 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 			dataOut.writeUTF("Andrew");
 			dataOut.writeUTF("Orians");
 			dataOut.writeUTF("andrew@example.com");
+			dataOut.writeUTF(startTime);
+			dataOut.writeUTF(endTime);
 		} catch(Exception e) {System.out.println("Failed to send");}
 
 		// close the connection

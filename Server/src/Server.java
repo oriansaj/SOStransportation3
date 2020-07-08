@@ -31,7 +31,7 @@ public class Server {
 				in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
 				try {
-					for (int i = 0; i < 3; i++) {
+					for (int i = 0; i < 5; i++) {
 						String line = in.readUTF();
 						System.out.println(line);
 					}
