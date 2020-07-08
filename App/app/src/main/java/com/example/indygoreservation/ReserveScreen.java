@@ -59,11 +59,14 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 		EditText stopEnter = (EditText) findViewById(R.id.editTextTime2);
 		final String stopTime = stopEnter.getText().toString();
 
+		Spinner routeDropdown = findViewById(R.id.route);
+		final String route = routeDropdown.getSelectedItem().toString();
+
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try  {
-					sendRequest("10.0.2.2", 5000, startTime, stopTime);
+					sendRequest("10.0.2.2", 5000, startTime, stopTime, route);
 				} catch (Exception e) {
 					System.out.println("In button: " + e);
 				}
@@ -79,7 +82,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 	 * @param address
 	 * @param port
 	 */
-	public void sendRequest(String address, int port, String startTime, String endTime) {
+	public void sendRequest(String address, int port, String startTime, String endTime, String route) {
 		Socket socket = null;
 		DataOutputStream dataOut = null;
 
@@ -97,6 +100,7 @@ public class ReserveScreen extends AppCompatActivity implements AdapterView.OnIt
 			dataOut.writeUTF("andrew@example.com");
 			dataOut.writeUTF(startTime);
 			dataOut.writeUTF(endTime);
+			dataOut.writeUTF(route);
 		} catch(Exception e) {System.out.println("Failed to send");}
 
 		// close the connection

@@ -32,7 +32,7 @@ public class Server {
 
 				try {
 					Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
-							in.readUTF());
+							in.readUTF(), in.readUTF());
 				} catch (IOException i) {
 					System.out.println(i);
 				}
