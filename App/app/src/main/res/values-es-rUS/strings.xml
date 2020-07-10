@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IndyGo Reserva</string>
+    <string name="username">Nombre de Usario</string>
+    <string name="password">Contraseña</string>
+    <string name="button_login">Iniciar Sesión</string>
+    <string name="button_new_acct">Crear Una Cuenta</string>
+    <string name="button_one_time_purchase">Compra de un Boleto Por Única Vez</string>
+    <string name="button_reserve">Reserve un Lugar</string>
+    <string name="button_purchase">Compra un Boleto</string>
+    <string name="button_logout">Cerrar Sesión</string>
+    <string name="text_notes">Notas</string>
+    <string name="text_address">Dirección de Parada</string>
+    <string name="button_reserve_now">Reservar Ahora</string>
+    <string name="button_yes">Si</string>
+    <string name="button_no">No</string>
+    <string name="password_confirm">Confirmar Contraseña</string>
+    <string name="text_firstname">Nombre de Pila</string>
+    <string name="text_lastname">Apellido</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="phone">Teléfono</string>
+    <string name="button_create">Crear Una Cuenta</string>
+    <string name="button_buy">Compra Ahora</string>
+    <string name="login_prompt">¿Quieres iniciar sesión primero?</string>
+    <string name="text_payment">Información de Pago</string>
+    <string name="text_start">Hora de Inicio</string>
+    <string name="text_end">Hora de Finalización</string>
+    <string name="text_welcome">¡Gracias por elegir IndyGo Transit!</string>
+</resources>

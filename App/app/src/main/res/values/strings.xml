@@ -55,4 +55,9 @@
         <item>901: Route 90 - 91st Street Extension</item>
         <item>902: Route 90 - Greenwood Extension</item>
     </string-array>
+    <string name="login_prompt">Do you want to login first?</string>
+    <string name="text_payment">Payment Info</string>
+    <string name="text_start">Start Time</string>
+    <string name="text_end">End Time</string>
+    <string name="text_welcome">Thank you for choosing IndyGo Transit!</string>
 </resources>
