@@ -15,7 +15,7 @@ public class OneTimePurchaseScreen extends ToolbarActivity {
 
     /** Called when the user taps the No button */
     public void no(View view) {
-        GlobalData.setLoginStatus(false);
+        Settings.setLoginStatus(false);
         Intent intent = new Intent(this, PurchaseScreen.class);
         startActivity(intent);
     }

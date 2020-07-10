@@ -15,7 +15,7 @@ public class MainActivity extends ToolbarActivity {
 
     /** Called when the user taps the Login button */
     public void login(View view) {
-        GlobalData.setLoginStatus(true);
+        Settings.setLoginStatus(true);
         Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
     }

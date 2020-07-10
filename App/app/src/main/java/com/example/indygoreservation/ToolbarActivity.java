@@ -1,6 +1,6 @@
 package com.example.indygoreservation;
 
-import android.app.Application;
+import android.content.Intent;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     public void displayToolbar(boolean displayBackArrow) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         if (displayBackArrow == true)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -27,5 +28,11 @@ public abstract class ToolbarActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    /** Called when the user taps the Settings button */
+    public void settings(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 }
