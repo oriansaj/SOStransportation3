@@ -1,31 +1,27 @@
 package com.example.indygoreservation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import java.net.*;
 import java.io.*;
 
-public class ReserveScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItemSelectedListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reserve_screen);
+		super.displayToolbar(true);
 
 		/*
 		 *  Route drop-down functionality added on reservation screen
 		 *  Basis of implementation and explanation on dropdown functionality can be found here:
 		 *  https://developer.android.com/guide/topics/ui/controls/spinner#java
 		 */
-
 		Spinner routeDropdown = findViewById(R.id.route);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.route_dropdown, R.layout.support_simple_spinner_dropdown_item);
 		adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
