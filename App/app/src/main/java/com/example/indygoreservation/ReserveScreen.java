@@ -27,6 +27,17 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 		routeDropdown.setAdapter(adapter);
 		routeDropdown.setOnItemSelectedListener(this);
+
+		//Set date and name boxes visible/invisible based on login status
+		if(!Settings.getLoginStatus()) {
+			EditText dateBox = (EditText) findViewById(R.id.editTextDate);
+			dateBox.setVisibility(View.INVISIBLE);
+		} else {
+			EditText firstnameBox = (EditText) findViewById(R.id.editTextTextPersonName);
+			EditText lastnameBox = (EditText) findViewById(R.id.editTextTextPersonName2);
+			firstnameBox.setVisibility(View.INVISIBLE);
+			lastnameBox.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	/*

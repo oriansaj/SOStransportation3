@@ -60,4 +60,5 @@
     <string name="text_start">Start Time</string>
     <string name="text_end">End Time</string>
     <string name="text_welcome">Thank you for choosing IndyGo Transit!</string>
+    <string name="text_date">Date</string>
 </resources>

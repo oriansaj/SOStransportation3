@@ -26,4 +26,5 @@
     <string name="text_start">Hora de Inicio</string>
     <string name="text_end">Hora de Finalización</string>
     <string name="text_welcome">¡Gracias por elegir IndyGo Transit!</string>
+    <string name="text_date">Fecha</string>
 </resources>
