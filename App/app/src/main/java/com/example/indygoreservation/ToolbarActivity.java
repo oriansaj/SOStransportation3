@@ -18,6 +18,15 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if (Settings.getSettingsPageActive() == true)
+        {
+            toolbar.findViewById(R.id.settings).setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            toolbar.findViewById(R.id.settings).setVisibility(View.VISIBLE);
+        }
+
         if (displayBackArrow == true)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
