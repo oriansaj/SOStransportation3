@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00539F</color>
-    <color name="colorPrimaryDark">#14284B</color>
-    <color name="colorAccent">#ED1D25</color>
+    <color name="customBlue">#00539F</color>
+    <color name="oxfordBlue">#14284B</color>
+    <color name="candyApple">#ED1D25</color>
+    <color name="customGreen">#47AD48</color>
+    <color name="limeGreen">#8DE73E</color>
+    <color name="mustardYellow">#F8B701</color>
 </resources>
