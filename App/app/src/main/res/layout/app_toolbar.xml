@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/oxfordBlue"
+    android:elevation="20dp"
     android:theme="@style/ToolbarTheme">
         <ImageButton
             android:id="@+id/settings"

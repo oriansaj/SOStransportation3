@@ -27,4 +27,6 @@
     <string name="text_end">Hora de Finalización</string>
     <string name="text_welcome">¡Gracias por elegir IndyGo Transit!</string>
     <string name="text_date">Fecha</string>
+    <string name="settings_page_header">Configuración</string>
+    <string name="automated_coupon_prompt">Recomendar automáticamente cupones para empresas locales</string>
 </resources>

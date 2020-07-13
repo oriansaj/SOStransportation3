@@ -61,4 +61,6 @@
     <string name="text_end">End Time</string>
     <string name="text_welcome">Thank you for choosing IndyGo Transit!</string>
     <string name="text_date">Date</string>
+    <string name="settings_page_header">Settings</string>
+    <string name="automated_coupon_prompt">Automatically recommend coupons for local businesses</string>
 </resources>
