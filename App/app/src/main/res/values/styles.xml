@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#1461B8</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#1461B8</item>
+        <item name="colorPrimary">#00539F</item>
+        <item name="colorPrimaryDark">#14284B</item>
+        <item name="colorAccent">#ED1D25</item>
     </style>
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#1461B8</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#1461B8</item>
+        <item name="colorPrimary">#00539F</item>
+        <item name="colorPrimaryDark">#14284B</item>
+        <item name="colorAccent">#ED1D25</item>
     </style>
 
 </resources>
