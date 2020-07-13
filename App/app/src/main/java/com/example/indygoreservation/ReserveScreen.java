@@ -102,9 +102,9 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		} catch(Exception e) {System.out.println("In connect: " + e);}
 
 		try {
-			dataOut.writeUTF("Andrew");
-			dataOut.writeUTF("Orians");
-			dataOut.writeUTF("andrew@example.com");
+			dataOut.writeUTF(Settings.getFirstname());
+			dataOut.writeUTF(Settings.getLastname());
+			dataOut.writeUTF(Settings.getEmail());
 			dataOut.writeUTF(startTime);
 			dataOut.writeUTF(endTime);
 			dataOut.writeUTF(route);

@@ -21,6 +21,11 @@ public class SelectionScreen extends ToolbarActivity {
 
     /** Called when the user taps the Logout button */
     public void logout(View view) {
+        Settings.setLoginStatus(false);
+        Settings.setFirstname("");
+        Settings.setLastname("");
+        Settings.setEmail("");
+        Settings.setPhone("");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

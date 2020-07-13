@@ -16,6 +16,10 @@ public class MainActivity extends ToolbarActivity {
     /** Called when the user taps the Login button */
     public void login(View view) {
         Settings.setLoginStatus(true);
+        Settings.setFirstname("Example");
+        Settings.setLastname("User");
+        Settings.setEmail("user@example.com");
+        Settings.setPhone("3175554639");
         Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
     }
