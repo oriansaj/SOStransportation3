@@ -16,7 +16,7 @@ public class Reservation implements Comparable<Reservation> {
 	private LocalTime endTime;
 	private String route;
 
-	public Reservation(String firstname, String lastname, String email, String startTime, String endTime,
+	public Reservation(String firstname, String lastname, String email, String date, String startTime, String endTime,
 			String route) {
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -25,7 +25,7 @@ public class Reservation implements Comparable<Reservation> {
 		this.endTime = LocalTime.parse(endTime).minusHours(-4);
 		this.route = route;
 
-		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nStart: "
+		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: " + date + "\nStart: "
 				+ this.startTime.toString() + "\nEnd: " + this.endTime.toString() + "\nRoute: " + route);
 		System.out.println(add(this));
 	}

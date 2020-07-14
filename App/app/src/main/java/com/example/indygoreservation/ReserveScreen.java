@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import java.net.*;
 import java.io.*;
+import java.util.Date;
 
 public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItemSelectedListener {
 
@@ -60,6 +61,26 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 
 	/** Called when the user taps the Reserve button */
 	public void reserve(View view) {
+		final String firstname;
+		final String lastname;
+		final String email;
+		final String date;
+		if(Settings.getLoginStatus()) {
+			firstname = Settings.getFirstname();
+			lastname = Settings.getLastname();
+			email = Settings.getEmail();
+			EditText dateBox = (EditText) findViewById(R.id.editTextDate);
+			date = dateBox.getText().toString();
+		} else {
+			EditText firstnameBox = (EditText) findViewById(R.id.editTextTextPersonName);
+			firstname = firstnameBox.getText().toString();
+			EditText lastnameBox = (EditText) findViewById(R.id.editTextTextPersonName2);
+			lastname = lastnameBox.getText().toString();
+			email = "";
+
+			Date now = new Date();
+			date = now.toString();
+		}
 		EditText startEnter = (EditText) findViewById(R.id.editTextTime);
 		final String startTime = startEnter.getText().toString(); //There's probably an issue with making this final, but it works
 
@@ -73,7 +94,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 			@Override
 			public void run() {
 				try  {
-					sendRequest("10.0.2.2", 5000, startTime, stopTime, route);
+					sendRequest("10.0.2.2", 5000, firstname, lastname, email, date, startTime, stopTime, route);
 				} catch (Exception e) {
 					System.out.println("In button: " + e);
 				}
@@ -89,7 +110,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 	 * @param address
 	 * @param port
 	 */
-	public void sendRequest(String address, int port, String startTime, String endTime, String route) {
+	public void sendRequest(String address, int port, String firstname, String lastname, String email, String date, String startTime, String endTime, String route) {
 		Socket socket = null;
 		DataOutputStream dataOut = null;
 
@@ -102,9 +123,10 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		} catch(Exception e) {System.out.println("In connect: " + e);}
 
 		try {
-			dataOut.writeUTF(Settings.getFirstname());
-			dataOut.writeUTF(Settings.getLastname());
-			dataOut.writeUTF(Settings.getEmail());
+			dataOut.writeUTF(firstname);
+			dataOut.writeUTF(lastname);
+			dataOut.writeUTF(email);
+			dataOut.writeUTF(date);
 			dataOut.writeUTF(startTime);
 			dataOut.writeUTF(endTime);
 			dataOut.writeUTF(route);

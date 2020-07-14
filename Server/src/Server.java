@@ -31,7 +31,7 @@ public class Server {
 				in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
 				try {
-					Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
+					Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
 							in.readUTF(), in.readUTF());
 				} catch (IOException i) {
 					System.out.println(i);
