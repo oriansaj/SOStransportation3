@@ -1,5 +1,6 @@
 
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
@@ -12,6 +13,7 @@ public class Reservation implements Comparable<Reservation> {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private Date start;
 	private LocalTime startTime;
 	private LocalTime endTime;
 	private String route;
@@ -21,20 +23,28 @@ public class Reservation implements Comparable<Reservation> {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+		this.start = new Date(Date.parse(date));
+		start.setSeconds(0);
+		start.setMinutes(Integer.parseInt(startTime.substring(3, 5)));
+		start.setHours(Integer.parseInt(startTime.substring(0, 2)));
 		this.startTime = LocalTime.parse(startTime).minusHours(-4);
 		this.endTime = LocalTime.parse(endTime).minusHours(-4);
 		this.route = route;
 
-		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: " + date + "\nStart: "
-				+ this.startTime.toString() + "\nEnd: " + this.endTime.toString() + "\nRoute: " + route);
+		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: "
+				+ this.start.toString() + "\nEnd: " + this.endTime.toString() + "\nRoute: " + route);
 		System.out.println(add(this));
 	}
 
 	@Override
 	public int compareTo(Reservation arg0) {
-		return this.startTime.compareTo(arg0.getStartTime());
+		return this.start.compareTo(arg0.getStart());
 	}
 
+	public Date getStart() {
+		return this.start;
+	}
+	
 	public LocalTime getStartTime() {
 		return this.startTime;
 	}
@@ -45,7 +55,7 @@ public class Reservation implements Comparable<Reservation> {
 
 	@Override
 	public String toString() {
-		return this.startTime.toString();
+		return this.start.toString();
 	}
 
 	/**
