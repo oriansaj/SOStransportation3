@@ -7,4 +7,5 @@
     <color name="limeGreen">#8DE73E</color>
     <color name="mustardYellow">#F8B701</color>
     <color name="editTextBackground">#E3E3E3</color>
+    <color name="customDarkGray">#171717</color>
 </resources>

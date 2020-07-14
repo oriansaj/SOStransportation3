@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/customBlue</item>
         <item name="colorPrimaryDark">@color/oxfordBlue</item>
         <item name="colorAccent">@color/candyApple</item>
+        <item name="titleTextColor">@color/editTextBackground</item>
     </style>
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->

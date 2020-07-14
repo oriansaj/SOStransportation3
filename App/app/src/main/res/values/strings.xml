@@ -5,8 +5,8 @@
     <string name="button_login">Login</string>
     <string name="button_new_acct">Create Account</string>
     <string name="button_one_time_purchase">One Time Ticket Purchase</string>
-    <string name="button_reserve">Reserve a spot</string>
-    <string name="button_purchase">Purchase a ticket</string>
+    <string name="button_reserve">Reserve a Spot</string>
+    <string name="button_purchase">Purchase a Ticket</string>
     <string name="button_logout">Logout</string>
     <string name="text_notes">Notes</string>
     <string name="text_address">Stop Address</string>
