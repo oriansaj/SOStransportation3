@@ -5,9 +5,9 @@ import java.util.PriorityQueue;
 
 public class Reservation implements Comparable<Reservation> {
 
-	public static final int MAX_CAPACITY = 5; // arbitrary number
-
-	private static HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();;
+//	public static final int MAX_CAPACITY = 5; // arbitrary number
+//
+//	private static HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -35,7 +35,8 @@ public class Reservation implements Comparable<Reservation> {
 
 		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: "
 				+ this.start.toString() + "\nEnd: " + this.end.toString() + "\nRoute: " + route);
-		System.out.println(add(this));
+		//System.out.println(add(this));
+		//if(!reservations.isEmpty()) {System.out.println("test");}
 	}
 
 	@Override
@@ -49,6 +50,10 @@ public class Reservation implements Comparable<Reservation> {
 
 	public Date getEnd() {
 		return this.end;
+	}
+	
+	public String getRoute() {
+		return this.route;
 	}
 
 	@Override
@@ -75,61 +80,62 @@ public class Reservation implements Comparable<Reservation> {
 	 * @param reservation to add
 	 * @return whether it could be added
 	 */
-	private static boolean add(Reservation toAdd) {
-		if (!reservations.containsKey(toAdd.route)) {
-			// There are no other reservations, so capacity is no issue. Just add it
-			PriorityQueue<Reservation> temp = new PriorityQueue<Reservation>();
-			temp.add(toAdd);
-			reservations.put(toAdd.route, temp);
-			return true;
-		} else {
-			// Check is there is enough room. Add and return true is there is, return false
-			// and do nothing otherwise
-			PriorityQueue<Reservation> line = reservations.get(toAdd.route);
-			if (line.size() < MAX_CAPACITY) {
-				// There are fewer reservations than the allowed maximum at a time. Capacity is
-				// no issue, so add it
-				reservations.get(toAdd.route).add(toAdd);
-				return true;
-			} else {
-				// Check how many reservations will be in use at the requested time. If it's
-				// more than the limit, deny it, otherwise add
-				int overlaps = 0;
-				for (Reservation r : line) {
-					if (toAdd.overlaps(r)) {
-						overlaps++;
-					}
-				}
-				if (overlaps < MAX_CAPACITY) {
-					reservations.get(toAdd.route).add(toAdd);
-					return true;
-				} else {
-					return false;
-				}
-			}
-			// System.out.println(reservations.get(route).toString());
-		}
+	public static boolean add(Reservation toAdd) {
+//		if (!reservations.containsKey(toAdd.route)) {
+//			// There are no other reservations, so capacity is no issue. Just add it
+//			PriorityQueue<Reservation> temp = new PriorityQueue<Reservation>();
+//			temp.add(toAdd);
+//			reservations.put(toAdd.route, temp);
+//			return true;
+//		} else {
+//			// Check is there is enough room. Add and return true is there is, return false
+//			// and do nothing otherwise
+//			PriorityQueue<Reservation> line = reservations.get(toAdd.route);
+//			if (line.size() < MAX_CAPACITY) {
+//				// There are fewer reservations than the allowed maximum at a time. Capacity is
+//				// no issue, so add it
+//				reservations.get(toAdd.route).add(toAdd);
+//				return true;
+//			} else {
+//				// Check how many reservations will be in use at the requested time. If it's
+//				// more than the limit, deny it, otherwise add
+//				int overlaps = 0;
+//				for (Reservation r : line) {
+//					if (toAdd.overlaps(r)) {
+//						overlaps++;
+//					}
+//				}
+//				if (overlaps < MAX_CAPACITY) {
+//					reservations.get(toAdd.route).add(toAdd);
+//					return true;
+//				} else {
+//					//System.out.println(reservations.get(toAdd.route).toString());
+//					return false;
+//				}
+//			}
+//		}
+		return false;
 	}
 
-	public static void main(String[] args) {
-		while (true) {
-			remove();
-		}
-	}
+//	public static void main(String[] args) {
+//		while (true) {
+//			remove();
+//		}
+//	}
 
 	/**
 	 * Checks for any active or past reservations and removes them from memory
 	 */
 	private static void remove() {
-		Date now = new Date();
-		System.out.println(reservations.keySet().toString());
-		for (String route : reservations.keySet()) {
-			Reservation next = reservations.get(route).peek();
-			if (next != null && (next.getStart().equals(now) || next.getStart().before(now))) {
-				System.out.println(reservations.get(route).toString());
-				reservations.get(route).poll();
-				System.out.println(reservations.get(route).toString());
-			}
-		}
+//		Date now = new Date();
+//		if(!reservations.isEmpty()) {System.out.println("yay!");}
+//		for (String route : reservations.keySet()) {
+//			Reservation next = reservations.get(route).peek();
+//			if (next != null && (next.getStart().equals(now) || next.getStart().before(now))) {
+//				System.out.println(reservations.get(route).toString());
+//				reservations.get(route).poll();
+//				System.out.println(reservations.get(route).toString());
+//			}
+//		}
 	}
 }
