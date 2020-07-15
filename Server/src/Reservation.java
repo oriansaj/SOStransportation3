@@ -1,5 +1,4 @@
 
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
@@ -8,14 +7,12 @@ public class Reservation implements Comparable<Reservation> {
 
 	public static final int MAX_CAPACITY = 5; // arbitrary number
 
-	private static HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();
-
+	private static HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();;
 	private String firstname;
 	private String lastname;
 	private String email;
 	private Date start;
-	private LocalTime startTime;
-	private LocalTime endTime;
+	private Date end;
 	private String route;
 
 	public Reservation(String firstname, String lastname, String email, String date, String startTime, String endTime,
@@ -23,16 +20,21 @@ public class Reservation implements Comparable<Reservation> {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.start = new Date(Date.parse(date));
+		// Make a date object to represent the start time, and change time accordingly
+		this.start = new Date(date);
 		start.setSeconds(0);
 		start.setMinutes(Integer.parseInt(startTime.substring(3, 5)));
 		start.setHours(Integer.parseInt(startTime.substring(0, 2)));
-		this.startTime = LocalTime.parse(startTime).minusHours(-4);
-		this.endTime = LocalTime.parse(endTime).minusHours(-4);
+		// The reservation should end on the same day, so get the date from the start
+		// Date and change the time
+		this.end = (Date) this.start.clone();
+		end.setSeconds(0);
+		end.setMinutes(Integer.parseInt(endTime.substring(3, 5)));
+		end.setHours(Integer.parseInt(endTime.substring(0, 2)));
 		this.route = route;
 
 		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: "
-				+ this.start.toString() + "\nEnd: " + this.endTime.toString() + "\nRoute: " + route);
+				+ this.start.toString() + "\nEnd: " + this.end.toString() + "\nRoute: " + route);
 		System.out.println(add(this));
 	}
 
@@ -44,13 +46,9 @@ public class Reservation implements Comparable<Reservation> {
 	public Date getStart() {
 		return this.start;
 	}
-	
-	public LocalTime getStartTime() {
-		return this.startTime;
-	}
 
-	public LocalTime getEndTime() {
-		return this.endTime;
+	public Date getEnd() {
+		return this.end;
 	}
 
 	@Override
@@ -66,9 +64,9 @@ public class Reservation implements Comparable<Reservation> {
 	 * @return if the two overlap
 	 */
 	public boolean overlaps(Reservation other) {
-		return this.startTime.equals(other.startTime) || this.endTime.equals(other.endTime)
-				|| (this.startTime.isAfter(other.getStartTime()) && this.startTime.isBefore(other.getEndTime()))
-				|| (this.endTime.isAfter(other.getStartTime()) && this.endTime.isBefore(other.getEndTime()));
+		return this.start.equals(other.getStart()) || this.end.equals(other.getEnd())
+				|| (this.start.after(other.getStart()) && this.start.before(other.getEnd()))
+				|| (this.end.after(other.getStart()) && this.end.before(other.getEnd()));
 	}
 
 	/**
@@ -110,6 +108,28 @@ public class Reservation implements Comparable<Reservation> {
 				}
 			}
 			// System.out.println(reservations.get(route).toString());
+		}
+	}
+
+	public static void main(String[] args) {
+		while (true) {
+			remove();
+		}
+	}
+
+	/**
+	 * Checks for any active or past reservations and removes them from memory
+	 */
+	private static void remove() {
+		Date now = new Date();
+		System.out.println(reservations.keySet().toString());
+		for (String route : reservations.keySet()) {
+			Reservation next = reservations.get(route).peek();
+			if (next != null && (next.getStart().equals(now) || next.getStart().before(now))) {
+				System.out.println(reservations.get(route).toString());
+				reservations.get(route).poll();
+				System.out.println(reservations.get(route).toString());
+			}
 		}
 	}
 }
