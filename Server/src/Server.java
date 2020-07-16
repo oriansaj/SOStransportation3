@@ -19,6 +19,27 @@ public class Server {
 	public static final int MAX_CAPACITY = 5; // arbitrary number
 	private HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();
 
+	// Inner class to simultaneously listen for new connections and check for
+	// current reservations. Code based on example from geeksforgeeks.org
+	// (https://www.geeksforgeeks.org/killing-threads-in-java/#:~:text=Modern%20ways%20to%20suspend%2Fstop,will%20be%20set%20to%20true.)
+	class RemovalThread implements Runnable {
+
+		Thread t;
+
+		RemovalThread() {
+			t = new Thread(this);
+			t.start(); // Starting the thread
+		}
+
+		// execution of thread starts from run() method
+		public void run() {
+			while (!Thread.interrupted()) {
+				remove();
+			}
+		}
+	}
+
+	
 	// constructor with port
 	public Server(int port) {
 		// starts server and waits for a connection
@@ -30,11 +51,17 @@ public class Server {
 		}
 	}
 
+	/**
+	 * Accepts a connection from a client, and creates a reservation based on the request
+	 */
 	private void acceptConnection() {
 		try {
 			System.out.println("Waiting for a client ...");
-
+			//While waiting on a client, set up a thread to check if any existing reservations are outdated (are or were in use)
+			RemovalThread thread = new RemovalThread();
 			socket = server.accept();
+			thread.t.interrupt();
+			//CLose the thread to modify the HashMap it is iterating over
 			System.out.println("Client accepted");
 
 			// takes input from the client socket
@@ -43,7 +70,7 @@ public class Server {
 			try {
 				Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
 						in.readUTF(), in.readUTF());
-				add(r);
+				System.out.println(add(r));
 				System.out.println(reservations.toString());
 			} catch (IOException i) {
 				System.out.println(i);
@@ -59,6 +86,12 @@ public class Server {
 		}
 	}
 
+	/**
+	 * Adds a reservation to the list if there is room
+	 * 
+	 * @param reservation to add
+	 * @return whether it could be added
+	 */
 	private boolean add(Reservation toAdd) {
 		if (!reservations.containsKey(toAdd.getRoute())) {
 			// There are no other reservations, so capacity is no issue. Just add it
@@ -96,11 +129,11 @@ public class Server {
 
 	}
 
+	/**
+	 * Checks for any active or past reservations and removes them from memory
+	 */
 	private void remove() {
 		Date now = new Date();
-		if (!reservations.isEmpty()) {
-			System.out.println("yay!");
-		}
 		for (String route : reservations.keySet()) {
 			Reservation next = reservations.get(route).peek();
 			if (next != null && (next.getStart().equals(now) || next.getStart().before(now))) {
@@ -111,6 +144,9 @@ public class Server {
 		}
 	}
 
+	/**
+	 * Set up a server and continually accept connections
+	 */
 	public static void main(String args[]) {
 		Server server = new Server(5000);
 		while (true) {
