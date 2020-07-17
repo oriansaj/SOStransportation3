@@ -119,5 +119,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/logowithglow" />
+    
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="515dp"
+        android:src="@drawable/IndianapolisPic1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
