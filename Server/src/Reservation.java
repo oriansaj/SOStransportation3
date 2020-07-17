@@ -24,14 +24,26 @@ public class Reservation implements Comparable<Reservation> {
 		// Make a date object to represent the start time, and change time accordingly
 		this.start = new Date(date);
 		start.setSeconds(0);
-		start.setMinutes(Integer.parseInt(startTime.substring(3, 5)));
-		start.setHours(Integer.parseInt(startTime.substring(0, 2)));
 		// The reservation should end on the same day, so get the date from the start
 		// Date and change the time
 		this.end = (Date) this.start.clone();
 		end.setSeconds(0);
-		end.setMinutes(Integer.parseInt(endTime.substring(3, 5)));
-		end.setHours(Integer.parseInt(endTime.substring(0, 2)));
+		//accounts for format X:XX (Non miltary time)
+		if (startTime.length() == 4)
+		{
+			start.setMinutes(Integer.parseInt(startTime.substring(2, 4)));
+			start.setHours(Integer.parseInt(startTime.substring(0, 1)));
+			end.setMinutes(Integer.parseInt(endTime.substring(2, 4)));
+			end.setHours(Integer.parseInt(endTime.substring(0, 1)));
+		}
+		//accounts for format XX:XX
+		else
+		{
+			start.setMinutes(Integer.parseInt(startTime.substring(3, 5)));
+			start.setHours(Integer.parseInt(startTime.substring(0, 2)));
+			end.setMinutes(Integer.parseInt(endTime.substring(3, 5)));
+			end.setHours(Integer.parseInt(endTime.substring(0, 2)));
+		}
 		this.route = route;
 		this.notes = notes;
 		
@@ -56,6 +68,11 @@ public class Reservation implements Comparable<Reservation> {
 	
 	public String getRoute() {
 		return this.route;
+	}
+
+	public String getEmail()
+	{
+		return email;
 	}
 
 	@Override
