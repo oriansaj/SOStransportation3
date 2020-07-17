@@ -87,6 +87,9 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		EditText stopEnter = (EditText) findViewById(R.id.editTextTime2);
 		final String stopTime = stopEnter.getText().toString();
 
+		EditText notesEnter = (EditText) findViewById(R.id.editTextTextMultiLine);
+		final String notes = notesEnter.getText().toString();
+
 		Spinner routeDropdown = findViewById(R.id.route);
 		final String route = routeDropdown.getSelectedItem().toString();
 
@@ -94,7 +97,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 			@Override
 			public void run() {
 				try  {
-					sendRequest("10.0.2.2", 5000, firstname, lastname, email, date, startTime, stopTime, route);
+					sendRequest("10.0.2.2", 5000, firstname, lastname, email, date, startTime, stopTime, route, notes);
 				} catch (Exception e) {
 					System.out.println("In button: " + e);
 				}
@@ -110,7 +113,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 	 * @param address
 	 * @param port
 	 */
-	public void sendRequest(String address, int port, String firstname, String lastname, String email, String date, String startTime, String endTime, String route) {
+	public void sendRequest(String address, int port, String firstname, String lastname, String email, String date, String startTime, String endTime, String route, String notes) {
 		Socket socket = null;
 		DataOutputStream dataOut = null;
 
@@ -130,6 +133,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 			dataOut.writeUTF(startTime);
 			dataOut.writeUTF(endTime);
 			dataOut.writeUTF(route);
+			dataOut.writeUTF(notes);
 		} catch(Exception e) {System.out.println("Failed to send");}
 
 		// close the connection

@@ -14,9 +14,10 @@ public class Reservation implements Comparable<Reservation> {
 	private Date start;
 	private Date end;
 	private String route;
+	private String notes;
 
 	public Reservation(String firstname, String lastname, String email, String date, String startTime, String endTime,
-			String route) {
+			String route, String notes) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
@@ -32,9 +33,10 @@ public class Reservation implements Comparable<Reservation> {
 		end.setMinutes(Integer.parseInt(endTime.substring(3, 5)));
 		end.setHours(Integer.parseInt(endTime.substring(0, 2)));
 		this.route = route;
-
+		this.notes = notes;
+		
 		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: "
-				+ this.start.toString() + "\nEnd: " + this.end.toString() + "\nRoute: " + route);
+				+ this.start.toString() + "\nEnd: " + this.end.toString() + "\nRoute: " + route + "\nNotes: " + this.notes);
 		//System.out.println(add(this));
 		//if(!reservations.isEmpty()) {System.out.println("test");}
 	}

@@ -63,4 +63,10 @@
     <string name="text_date">Date</string>
     <string name="settings_page_header">Settings</string>
     <string name="automated_coupon_prompt">Automatically recommend coupons for local businesses</string>
+    <string name="ticket_two_hour">Two-Hour Transfer - $1.75</string>
+    <string name="ticket_one_day">One Day - $4.00</string>
+    <string name="ticket_10_trips">10 Trips - $17.50</string>
+    <string name="ticket_7_days">7 Days - $20.00</string>
+    <string name="ticket_31_days">31 Days - $60.00</string>
+    <string name="ticket_one_trip">Open Door One Trip - $3.50</string>
 </resources>

@@ -30,7 +30,7 @@
 
     <RadioGroup
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
@@ -44,21 +44,42 @@
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Two Hour Half Fare - $1.75"
+            android:text="@string/ticket_two_hour"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Two Hour Full Fare - $3.50"
+            android:text="@string/ticket_one_day"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Day Pass - $8.00"
+            android:text="@string/ticket_10_trips"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ticket_7_days"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ticket_31_days"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ticket_one_trip"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RadioGroup>
 
