@@ -136,7 +136,7 @@ public class Server {
 		Date now = new Date();
 		for (String route : reservations.keySet()) {
 			Reservation next = reservations.get(route).peek();
-			if (next != null && (next.getStart().equals(now) || next.getStart().before(now))) {
+			if (next != null && (next.getEnd().equals(now) || next.getEnd().before(now))) {
 				System.out.println(reservations.get(route).toString());
 				reservations.get(route).poll();
 				System.out.println(reservations.get(route).toString());

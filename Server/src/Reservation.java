@@ -55,7 +55,7 @@ public class Reservation implements Comparable<Reservation> {
 
 	@Override
 	public int compareTo(Reservation arg0) {
-		return this.start.compareTo(arg0.getStart());
+		return this.end.compareTo(arg0.getEnd());
 	}
 
 	public Date getStart() {
