@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 public class NewAccount extends ToolbarActivity {
 
     @Override
@@ -17,15 +21,43 @@ public class NewAccount extends ToolbarActivity {
     /** Called when the user taps the Create Account button */
     public void create(View view) {
         Settings.setLoginStatus(true);
+        EditText usernameBox = (EditText) findViewById(R.id.editTextTextPersonName3);
+        String username = usernameBox.getText().toString();
+        EditText passBox = (EditText) findViewById(R.id.editTextTextPassword2);
+        String pass = passBox.getText().toString();
+        EditText confirmPassBox = (EditText) findViewById(R.id.editTextTextPassword3);
+        String confirmPass = confirmPassBox.getText().toString();
         EditText firstnameBox = (EditText) findViewById(R.id.editTextTextPersonName4);
-        Settings.setFirstname(firstnameBox.getText().toString());
+        String firstname = firstnameBox.getText().toString();
+        Settings.setFirstname(firstname);
         EditText lastnameBox = (EditText) findViewById(R.id.editTextTextPersonName5);
-        Settings.setLastname(lastnameBox.getText().toString());
+        String lastname = lastnameBox.getText().toString();
+        Settings.setLastname(lastname);
         EditText emailBox = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        Settings.setEmail(emailBox.getText().toString());
+        String email = emailBox.getText().toString();
+        Settings.setEmail(email);
         EditText phoneBox = (EditText) findViewById(R.id.editTextPhone);
-        Settings.setPhone(phoneBox.getText().toString());
+        String phone = phoneBox.getText().toString();
+        Settings.setPhone(phone);
+        if(pass.equals(confirmPass)) {
+            updateDB(username,pass,firstname,lastname,email,phone);
+        }
         Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
+    }
+
+    private void updateDB(String username, String password, String first, String last, String email, String phone) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://10.0.2.2:3306/accounts?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=EDT";;
+            String uname = "ReservationApp";
+            String pass = "transportation3";
+            Class.forName(driver);
+
+            Connection con = DriverManager.getConnection(url, uname, pass);
+            Statement stmt = con.createStatement();
+            stmt.execute("INSERT INTO users VALUES ('" +username+ "', '" +password+ "', '" +first+ "', '" +last+ "', '" +email + "', '" + phone + "')");
+            con.close();
+        } catch (Exception e) {e.printStackTrace();}
     }
 }
