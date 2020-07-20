@@ -49,8 +49,8 @@ public class NewAccount extends ToolbarActivity {
     private void updateDB(String username, String password, String first, String last, String email, String phone) {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://10.0.2.2:3306/accounts?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=EDT";;
-            String uname = "ReservationApp";
+            String url = "jdbc:mysql://10.0.2.2:3306/accounts";
+            String uname = "root";
             String pass = "transportation3";
             Class.forName(driver);
 
