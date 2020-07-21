@@ -35,4 +35,5 @@
     <string name="ticket_7_days">7 Días - $20.00</string>
     <string name="ticket_31_days">31 Días - $60.00</string>
     <string name="ticket_one_trip">Puerta Abierta Un Viaje - $3.50</string>
+    <string name="text_ad_placeholder">En un lanzamiento completo, habría un complemento para un negocio local aquí</string>
 </resources>

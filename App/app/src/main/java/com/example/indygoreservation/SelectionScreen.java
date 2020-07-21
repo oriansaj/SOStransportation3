@@ -3,6 +3,8 @@ package com.example.indygoreservation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class SelectionScreen extends ToolbarActivity {
 
@@ -11,6 +13,12 @@ public class SelectionScreen extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection_screen);
         super.displayToolbar(true);
+
+        if(!Settings.getShowAds()) {
+            TextView ad = (TextView) findViewById(R.id.textView3);
+            ad.setVisibility(View.INVISIBLE);
+            ad.setHeight(0);
+        }
     }
 
      /** Called when the user taps the Reserve button **/

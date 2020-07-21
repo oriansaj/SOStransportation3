@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
@@ -40,11 +41,20 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		if(!Settings.getLoginStatus()) {
 			EditText dateBox = (EditText) findViewById(R.id.editTextDate);
 			dateBox.setVisibility(View.INVISIBLE);
+			dateBox.setHeight(0);
 		} else {
 			EditText firstnameBox = (EditText) findViewById(R.id.editTextTextPersonName);
 			EditText lastnameBox = (EditText) findViewById(R.id.editTextTextPersonName2);
 			firstnameBox.setVisibility(View.INVISIBLE);
 			lastnameBox.setVisibility(View.INVISIBLE);
+			firstnameBox.setHeight(0);
+			lastnameBox.setHeight(0);
+		}
+
+		if(!Settings.getShowAds()) {
+			TextView ad = (TextView) findViewById(R.id.textView6);
+			ad.setVisibility(View.INVISIBLE);
+			ad.setHeight(0);
 		}
 	}
 

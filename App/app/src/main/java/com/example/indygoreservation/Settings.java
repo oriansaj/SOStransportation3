@@ -1,6 +1,8 @@
 package com.example.indygoreservation;
 
 import android.os.Bundle;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class Settings extends ToolbarActivity {
 
@@ -10,6 +12,7 @@ public class Settings extends ToolbarActivity {
     private static String lastname;
     private static String email;
     private static String phone;
+    private static boolean showAds = true;
 
     /**
      * Setter/getter functions for logged in info
@@ -48,11 +51,25 @@ public class Settings extends ToolbarActivity {
         settingsActive = active;
     }
 
+    public static boolean getShowAds() {return showAds;}
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         setSettingsPageActivity(true);
         super.displayToolbar(true);
+
+        Switch ads = (Switch) findViewById(R.id.automatedCouponRecommendationSwitch);
+        ads.setChecked(showAds);
+        ads.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showAds = true;
+                } else {
+                    showAds = false;
+                }
+            }
+        });
     }
 
     protected void onDestroy() {

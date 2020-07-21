@@ -3,6 +3,7 @@ package com.example.indygoreservation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class OneTimePurchaseScreen extends ToolbarActivity {
 
@@ -11,6 +12,12 @@ public class OneTimePurchaseScreen extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_time_purchase);
         super.displayToolbar(true);
+
+        if(!Settings.getShowAds()) {
+            TextView ad = (TextView) findViewById(R.id.textView4);
+            ad.setVisibility(View.INVISIBLE);
+            ad.setHeight(0);
+        }
     }
 
     /** Called when the user taps the No button */
