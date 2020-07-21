@@ -4,31 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PurchaseScreen"
-    android:background="@color/oxfordBlue">
+    android:background="@color/oxfordBlue"
+    tools:context=".PurchaseScreen">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/app_toolbar"/>
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="365dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@color/editTextBackground"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/text_payment"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        layout="@layout/app_toolbar" />
 
     <RadioGroup
         android:layout_width="0dp"
@@ -40,61 +21,60 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2">
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6">
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_two_hour"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_day"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_10_trips"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_7_days"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
 
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_31_days"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
 
         <RadioButton
             android:id="@+id/radioButton6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_trip"
-            android:textColor="@color/editTextBackground"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/editTextBackground" />
     </RadioGroup>
 
     <Button
         android:id="@+id/button11"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/mustardYellow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -102,6 +82,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/mustardYellow"
         android:text="@string/button_buy"
         android:textColor="@color/customDarkGray"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -119,5 +100,73 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumberPassword"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:hint="@string/card_number"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:hint="@string/card_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword2" />
+
+    <EditText
+        android:id="@+id/editTextNumberPassword2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:hint="@string/cvc_code"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDate2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberPassword" />
+
+    <EditText
+        android:id="@+id/editTextDate2"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/editTextBackground"
+        android:ems="10"
+        android:hint="@string/expiration_date"
+        android:inputType="date"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextNumberPassword2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextNumberPassword2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
