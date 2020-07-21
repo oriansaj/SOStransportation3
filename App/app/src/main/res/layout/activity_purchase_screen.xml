@@ -87,7 +87,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@color/mustardYellow"
         android:text="@string/button_buy"
         android:textColor="@color/customDarkGray"
@@ -103,6 +103,7 @@
         android:text="@string/text_ad_placeholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/editTextBackground"
+        android:background="@color/customDarkGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
