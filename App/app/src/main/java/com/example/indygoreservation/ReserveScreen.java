@@ -1,11 +1,18 @@
 package com.example.indygoreservation;
 
+import android.graphics.Rect;
+import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import androidx.annotation.RequiresApi;
+
 import java.net.*;
 import java.io.*;
 import java.util.Date;
@@ -113,9 +120,11 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 	 * @param address
 	 * @param port
 	 */
-	public void sendRequest(String address, int port, String firstname, String lastname, String email, String date, String startTime, String endTime, String route, String notes) {
+	public void sendRequest(String address, int port, String firstname, String lastname, String email, String date, String startTime, String endTime, String route, String notes) throws IOException {
 		Socket socket = null;
 		DataOutputStream dataOut = null;
+		DataInputStream dataIn = null;
+		boolean downloadPDF = false;
 
 		// establish a connection
 		try {
@@ -123,6 +132,8 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 
 			// sends output to the socket
 			dataOut = new DataOutputStream(socket.getOutputStream());
+			// gets data back from server
+			dataIn = new DataInputStream(socket.getInputStream());
 		} catch(Exception e) {System.out.println("In connect: " + e);}
 
 		try {
@@ -136,10 +147,67 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 			dataOut.writeUTF(notes);
 		} catch(Exception e) {System.out.println("Failed to send");}
 
+		do
+		{
+			try {
+				String input = dataIn.readUTF();
+				if (input == null)
+				{
+					continue;
+				}
+				else if (input.compareTo("Download") == 0)
+				{
+					downloadPDF = true;
+					break;
+				}
+				else if (input.compareTo("TicketProcessed") != 0)
+				{
+					break;
+				}
+			} catch (EOFException e)
+			{
+				System.out.println(e);
+				break;
+			} catch (IOException ex)
+			{
+				System.out.println(ex);
+				break;
+			}
+
+		} while (true);
+
 		// close the connection
 		try {
 			dataOut.close();
+			dataIn.close();
 			socket.close();
 		} catch(Exception e) {System.out.println("Failed to close");}
+
+		if (downloadPDF == true)
+		{
+			downloadTicket();
+		}
+	}
+
+	/*
+	 *  Generates PDF with ticket if email confirmation is unvailable - STILL IN PROGRESS
+	 *  Adaptation from documentation found here: https://developer.android.com/reference/android/graphics/pdf/PdfDocument
+	 */
+	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
+	public void downloadTicket()
+	{
+		PdfDocument ticket = new PdfDocument();
+		PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(100, 100, 1).create();
+		PdfDocument.Page page = ticket.startPage(pageInfo);
+
+		ticket.finishPage(page);
+		File file = new File(Environment.getExternalStorageState(), "/ticket.pdf");
+		try {
+			ticket.writeTo(new FileOutputStream(file));
+		} catch (IOException e)
+		{
+			System.out.println(e);
+		}
+		ticket.close();
 	}
 }

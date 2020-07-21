@@ -1,5 +1,6 @@
 package com.example.indygoreservation;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class PurchaseScreen extends ToolbarActivity {

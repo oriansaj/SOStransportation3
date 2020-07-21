@@ -75,6 +75,11 @@ public class Reservation implements Comparable<Reservation> {
 		return email;
 	}
 
+	public String getFirstname()
+	{
+		return firstname;
+	}
+
 	@Override
 	public String toString() {
 		return this.start.toString();

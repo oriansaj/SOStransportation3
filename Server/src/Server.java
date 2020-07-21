@@ -11,11 +11,12 @@ import java.io.*;
  * @author Andrew Orians, geeksforgeeks.org
  *
  */
-public class Server {
+public class Server extends EmailConfirmation {
 	// initialize socket and input stream
 	private Socket socket = null;
 	private ServerSocket server = null;
 	private DataInputStream in = null;
+	private DataOutputStream out = null;
 	public static final int MAX_CAPACITY = 5; // arbitrary number
 	private HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();
 
@@ -67,11 +68,21 @@ public class Server {
 			// takes input from the client socket
 			in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
+			// sends data back to client
+			out = new DataOutputStream(socket.getOutputStream());
+
 			try {
 				Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
 						in.readUTF(), in.readUTF(), in.readUTF());
 				System.out.println(add(r));
 				System.out.println(reservations.toString());
+				promptAuthorizedUserEmailCredentials();
+				sendReservationConfirmation(r);
+				if (downloadPDF == true)
+				{
+					out.writeUTF("Download");
+				}
+				out.writeUTF("TicketProcessed");
 			} catch (IOException i) {
 				System.out.println(i);
 			}
@@ -81,6 +92,7 @@ public class Server {
 			// close connection
 			socket.close();
 			in.close();
+			out.close();
 		} catch (IOException i) {
 			System.out.println(i);
 		}
