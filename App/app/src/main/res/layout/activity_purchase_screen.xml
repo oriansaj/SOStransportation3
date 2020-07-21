@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PurchaseScreen">
+    tools:context=".PurchaseScreen"
+    android:background="@color/oxfordBlue">
 
     <include
         android:id="@+id/toolbar"
@@ -19,6 +20,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:background="@color/editTextBackground"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/text_payment"
@@ -45,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_two_hour"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -52,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_day"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -59,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_10_trips"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -66,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_7_days"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -73,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_31_days"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <RadioButton
@@ -80,12 +87,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_trip"
+            android:textColor="@color/editTextBackground"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </RadioGroup>
 
     <Button
         android:id="@+id/button11"
         style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/mustardYellow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -94,6 +103,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/button_buy"
+        android:textColor="@color/customDarkGray"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
