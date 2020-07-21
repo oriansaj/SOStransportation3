@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_two_hour"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
 
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_day"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
 
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_10_trips"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
 
@@ -52,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_7_days"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
 
@@ -60,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_31_days"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
 
@@ -68,6 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ticket_one_trip"
+            android:paddingLeft="5dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/editTextBackground" />
     </RadioGroup>

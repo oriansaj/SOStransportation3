@@ -22,14 +22,15 @@ public class OneTimePurchaseScreen extends ToolbarActivity {
 
     /** Called when the user taps the No button */
     public void no(View view) {
-        Settings.setLoginStatus(false);
-        Intent intent = new Intent(this, SelectionScreen.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     /** Called when the user taps the Yes button */
     public void yes(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+
+        Settings.setLoginStatus(false);
+        Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
     }
 }
