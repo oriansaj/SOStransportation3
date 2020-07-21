@@ -76,8 +76,15 @@ public class Server extends EmailConfirmation {
 						in.readUTF(), in.readUTF(), in.readUTF());
 				System.out.println(add(r));
 				System.out.println(reservations.toString());
-				promptAuthorizedUserEmailCredentials();
-				sendReservationConfirmation(r);
+				if (r.getEmail().isEmpty())
+				{
+					downloadPDF = true;
+				}
+				else
+				{
+					promptAuthorizedUserEmailCredentials();
+					sendReservationConfirmation(r);
+				}
 				if (downloadPDF == true)
 				{
 					out.writeUTF("Download");
