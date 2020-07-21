@@ -5,7 +5,7 @@
     <string name="password">Contraseña</string>
     <string name="button_login">Iniciar Sesión</string>
     <string name="button_new_acct">Crear Una Cuenta</string>
-    <string name="button_one_time_purchase">Compra de un Boleto Por Única Vez</string>
+    <string name="button_one_time_purchase">Invitado/a</string>
     <string name="button_reserve">Reserve un Lugar</string>
     <string name="button_purchase">Compra un Boleto</string>
     <string name="button_logout">Cerrar Sesión</string>
@@ -21,7 +21,7 @@
     <string name="phone">Teléfono</string>
     <string name="button_create">Crear Una Cuenta</string>
     <string name="button_buy">Compra Ahora</string>
-    <string name="login_prompt">¿Quieres iniciar sesión primero?</string>
+    <string name="login_prompt">Los huéspedes solo pueden reservar asientos para el día de uso y comprar boletos. ¿Desea proceder como invitado?</string>
     <string name="text_payment">Información de Pago</string>
     <string name="text_start">Hora de Inicio</string>
     <string name="text_end">Hora de Finalización</string>

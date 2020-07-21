@@ -4,7 +4,7 @@
     <string name="password">Password</string>
     <string name="button_login">Login</string>
     <string name="button_new_acct">Create Account</string>
-    <string name="button_one_time_purchase">One Time Ticket Purchase</string>
+    <string name="button_one_time_purchase">Guest</string>
     <string name="button_reserve">Reserve a Spot</string>
     <string name="button_purchase">Purchase a Ticket</string>
     <string name="button_logout">Logout</string>
@@ -55,7 +55,7 @@
         <item>901: Route 90 - 91st Street Extension</item>
         <item>902: Route 90 - Greenwood Extension</item>
     </string-array>
-    <string name="login_prompt">Do you want to login first?</string>
+    <string name="login_prompt">Guests may only reserve seats for the day of use and purchase tickets. Do you wish to proceed as a guest?</string>
     <string name="text_payment">Payment Info</string>
     <string name="text_start">Start Time</string>
     <string name="text_end">End Time</string>
