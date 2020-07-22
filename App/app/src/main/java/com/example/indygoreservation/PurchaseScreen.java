@@ -1,6 +1,7 @@
 package com.example.indygoreservation;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -126,11 +127,14 @@ public class PurchaseScreen extends ToolbarActivity {
             }
         });
         thread.start();
+
+        Intent intent = new Intent(this, PurchaseThanks.class);
+        startActivity(intent);
     }
 
     //Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
     /**
-     * Sends a string (eventually the data of the reservation) to the server
+     * Sends a the data of the purchase to the server
      * @param address
      * @param port
      */

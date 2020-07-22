@@ -74,4 +74,7 @@
     <string name="cvc_code">CVC Code</string>
     <string name="expiration_date">Expiration Date</string>
     <string name="card_name">Name on Card</string>
+    <string name="reservation_thanks">Thank you for reserving a seat! You should shortly be receiving an email confirming your reservation, or a similar PDF should be saved to your device. Have a wonderful day!</string>
+    <string name="button_back_to_main">Logout and Return to Main</string>
+    <string name="ticket_thanks">Thank you for purchasing a ticket! You should shortly be receiving an email confirming your purchase, or a similar PDF should be saved to your device. Have a wonderful day!</string>
 </resources>

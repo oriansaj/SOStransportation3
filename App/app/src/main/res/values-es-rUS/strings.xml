@@ -36,4 +36,11 @@
     <string name="ticket_31_days">31 Días - $60.00</string>
     <string name="ticket_one_trip">Puerta Abierta Un Viaje - $3.50</string>
     <string name="text_ad_placeholder">En un lanzamiento completo, habría un complemento para un negocio local aquí</string>
+    <string name="card_number">Número de Tarjeta</string>
+    <string name="cvc_code">Código CVC</string>
+    <string name="expiration_date">Fecha de Caducidad</string>
+    <string name="card_name">Nombre en la Tarjeta</string>
+    <string name="reservation_thanks">¡Gracias por reservar un asiento! En breve, recibirá un correo electrónico confirmando su reserva, o se guardará un archivo PDF similar en su dispositivo. ¡Ten un día maravilloso!</string>
+    <string name="button_back_to_main">Cerrar Sesión y Volver a la Página Principal</string>
+    <string name="ticket_thanks">¡Gracias por comprar un boleto! En breve debería recibir un correo electrónico confirmando su compra, o se debería guardar un PDF similar en su dispositivo. ¡Ten un día maravilloso!</string>
 </resources>
