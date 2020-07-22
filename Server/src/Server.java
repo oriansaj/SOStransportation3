@@ -40,7 +40,6 @@ public class Server extends EmailConfirmation {
 		}
 	}
 
-	
 	// constructor with port
 	public Server(int port) {
 		// starts server and waits for a connection
@@ -53,16 +52,18 @@ public class Server extends EmailConfirmation {
 	}
 
 	/**
-	 * Accepts a connection from a client, and creates a reservation based on the request
+	 * Accepts a connection from a client, and creates a reservation based on the
+	 * request
 	 */
 	private void acceptConnection() {
 		try {
 			System.out.println("Waiting for a client ...");
-			//While waiting on a client, set up a thread to check if any existing reservations are outdated (are or were in use)
+			// While waiting on a client, set up a thread to check if any existing
+			// reservations are outdated (are or were in use)
 			RemovalThread thread = new RemovalThread();
 			socket = server.accept();
 			thread.t.interrupt();
-			//CLose the thread to modify the HashMap it is iterating over
+			// CLose the thread to modify the HashMap it is iterating over
 			System.out.println("Client accepted");
 
 			// takes input from the client socket
@@ -76,17 +77,15 @@ public class Server extends EmailConfirmation {
 						in.readUTF(), in.readUTF(), in.readUTF());
 				System.out.println(add(r));
 				System.out.println(reservations.toString());
-				if (r.getEmail().isEmpty())
+				if (r.getEmail().isEmpty()) // Tell the app to download a pdf version
 				{
 					downloadPDF = true;
-				}
-				else
+				} else // Send email confirmation
 				{
 					promptAuthorizedUserEmailCredentials();
 					sendReservationConfirmation(r);
 				}
-				if (downloadPDF == true)
-				{
+				if (downloadPDF == true) {
 					out.writeUTF("Download");
 				}
 				out.writeUTF("TicketProcessed");
@@ -153,6 +152,8 @@ public class Server extends EmailConfirmation {
 	 */
 	private void remove() {
 		Date now = new Date();
+		// Iterate over all routes, checking to see if next reservation to end is now or
+		// has already ended. Removes if true.
 		for (String route : reservations.keySet()) {
 			Reservation next = reservations.get(route).peek();
 			if (next != null && (next.getEnd().equals(now) || next.getEnd().before(now))) {

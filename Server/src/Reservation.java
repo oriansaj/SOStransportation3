@@ -5,9 +5,6 @@ import java.util.PriorityQueue;
 
 public class Reservation implements Comparable<Reservation> {
 
-//	public static final int MAX_CAPACITY = 5; // arbitrary number
-//
-//	private static HashMap<String, PriorityQueue<Reservation>> reservations = new HashMap<String, PriorityQueue<Reservation>>();
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -28,35 +25,43 @@ public class Reservation implements Comparable<Reservation> {
 		// Date and change the time
 		this.end = (Date) this.start.clone();
 		end.setSeconds(0);
-		//accounts for format X:XX (Non miltary time)
-		if (startTime.length() == 4)
-		{
+		// accounts for format X:XX (Non miltary time)
+		if (startTime.length() == 4) {
 			start.setMinutes(Integer.parseInt(startTime.substring(2, 4)));
 			start.setHours(Integer.parseInt(startTime.substring(0, 1)));
-			end.setMinutes(Integer.parseInt(endTime.substring(2, 4)));
-			end.setHours(Integer.parseInt(endTime.substring(0, 1)));
 		}
-		//accounts for format XX:XX
-		else
-		{
+		// accounts for format XX:XX
+		else {
 			start.setMinutes(Integer.parseInt(startTime.substring(3, 5)));
 			start.setHours(Integer.parseInt(startTime.substring(0, 2)));
+		} // Same scenarios, but for end time
+		if (endTime.length() == 4) {
+			end.setMinutes(Integer.parseInt(endTime.substring(2, 4)));
+			end.setHours(Integer.parseInt(endTime.substring(0, 1)));
+		} else {
 			end.setMinutes(Integer.parseInt(endTime.substring(3, 5)));
 			end.setHours(Integer.parseInt(endTime.substring(0, 2)));
 		}
 		this.route = route;
 		this.notes = notes;
-		
-		System.out.println("Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: "
-				+ this.start.toString() + "\nEnd: " + this.end.toString() + "\nRoute: " + route + "\nNotes: " + this.notes);
-		//System.out.println(add(this));
-		//if(!reservations.isEmpty()) {System.out.println("test");}
+
+		System.out.println(
+				"Name: " + firstname + " " + lastname + "\nEmail: " + email + "\nDate: " + this.start.toString()
+						+ "\nEnd: " + this.end.toString() + "\nRoute: " + route + "\nNotes: " + this.notes);
 	}
 
+	/**
+	 * Implements compareTo so can be stored in a PriorityQueue
+	 */
 	@Override
 	public int compareTo(Reservation arg0) {
 		return this.end.compareTo(arg0.getEnd());
 	}
+
+	/**
+	 * Getters for basic data
+	 *
+	 */
 
 	public Date getStart() {
 		return this.start;
@@ -65,21 +70,22 @@ public class Reservation implements Comparable<Reservation> {
 	public Date getEnd() {
 		return this.end;
 	}
-	
+
 	public String getRoute() {
 		return this.route;
 	}
 
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-	public String getFirstname()
-	{
+	public String getFirstname() {
 		return firstname;
 	}
 
+	/**
+	 * String representation is the string representation of its start time
+	 */
 	@Override
 	public String toString() {
 		return this.start.toString();

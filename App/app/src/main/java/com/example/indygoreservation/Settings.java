@@ -59,6 +59,7 @@ public class Settings extends ToolbarActivity {
         setSettingsPageActivity(true);
         super.displayToolbar(true);
 
+        //Set state of switch to match variable
         Switch ads = (Switch) findViewById(R.id.automatedCouponRecommendationSwitch);
         ads.setChecked(showAds);
         ads.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

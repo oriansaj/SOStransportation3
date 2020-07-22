@@ -60,6 +60,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 			lastnameBox.setHeight(0);
 		}
 
+		//Show or hide ad based on settings
 		if(!Settings.getShowAds()) {
 			TextView ad = (TextView) findViewById(R.id.textView6);
 			ad.setVisibility(View.INVISIBLE);
@@ -158,6 +159,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		} catch(Exception e) {System.out.println("In connect: " + e);}
 
 		try {
+			//Send data
 			dataOut.writeUTF(firstname);
 			dataOut.writeUTF(lastname);
 			dataOut.writeUTF(email);
@@ -171,6 +173,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		do
 		{
 			try {
+				//Read server response and act accordingly
 				String input = dataIn.readUTF();
 				if (input == null)
 				{

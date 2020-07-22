@@ -14,6 +14,7 @@ public class SelectionScreen extends ToolbarActivity {
         setContentView(R.layout.activity_selection_screen);
         super.displayToolbar(true);
 
+        //Hides ad based on settings
         if(!Settings.getShowAds()) {
             TextView ad = (TextView) findViewById(R.id.textView3);
             ad.setVisibility(View.INVISIBLE);
@@ -21,13 +22,13 @@ public class SelectionScreen extends ToolbarActivity {
         }
     }
 
-     /** Called when the user taps the Reserve button **/
+     /** Called when the user taps the Reserve button. Sends to reservation screen **/
     public void reserve(View view) {
         Intent intent = new Intent(this, ReserveScreen.class);
         startActivity(intent);
     }
 
-    /** Called when the user taps the Logout button */
+    /** Called when the user taps the Logout button. Clears data and returns to main screen */
     public void logout(View view) {
         Settings.setLoginStatus(false);
         Settings.setFirstname("");
@@ -38,7 +39,7 @@ public class SelectionScreen extends ToolbarActivity {
         startActivity(intent);
     }
 
-    /** Called when the user taps the Purchase button */
+    /** Called when the user taps the Purchase button. Sends to purchasing screen */
     public void purchase(View view) {
         Intent intent = new Intent(this, PurchaseScreen.class);
         startActivity(intent);

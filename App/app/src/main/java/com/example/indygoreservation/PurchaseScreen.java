@@ -13,6 +13,7 @@ public class PurchaseScreen extends ToolbarActivity {
         setContentView(R.layout.activity_purchase_screen);
         super.displayToolbar(true);
 
+        //Hides ad based on settings
         if(!Settings.getShowAds()) {
             TextView ad = (TextView) findViewById(R.id.textView5);
             ad.setVisibility(View.INVISIBLE);

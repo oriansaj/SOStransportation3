@@ -18,7 +18,7 @@ public class NewAccount extends ToolbarActivity {
         super.displayToolbar(true);
     }
 
-    /** Called when the user taps the Create Account button */
+    /** Called when the user taps the Create Account button. Stores entered data */
     public void create(View view) {
         Settings.setLoginStatus(true);
         EditText usernameBox = (EditText) findViewById(R.id.editTextTextPersonName3);
@@ -46,6 +46,15 @@ public class NewAccount extends ToolbarActivity {
         startActivity(intent);
     }
 
+    /**
+     * Connects to and updates a mySQL database. This doesn't work yet
+     * @param username
+     * @param password
+     * @param first
+     * @param last
+     * @param email
+     * @param phone
+     */
     private void updateDB(String username, String password, String first, String last, String email, String phone) {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";

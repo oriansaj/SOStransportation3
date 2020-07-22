@@ -39,7 +39,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         }
     }
 
-    /** Called when the user taps the Settings button */
+    /** Called when the user taps the Settings button. Sends to settings page */
     public void settings(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
