@@ -52,7 +52,7 @@ public class EmailConfirmation {
     /*
      *  Backend ability to attempt to send email confirmation from team gmail, if they used incorrect login credentials
      */
-    public void attemptToResendConfirmation(Reservation reservation)
+    public void attemptToResendConfirmation(Reservation reservation, Purchase purchase)
     {
         Scanner scan = new Scanner(System.in);
         String userInput;
@@ -77,7 +77,14 @@ public class EmailConfirmation {
          if (retry)
          {
              promptAuthorizedUserEmailCredentials();
-             sendReservationConfirmation(reservation);
+             if (reservation == null)
+             {
+                 sendTicketPurchaseConfirmation(purchase);
+             }
+             else
+             {
+                 sendReservationConfirmation(reservation);
+             }
          }
          else
          {
@@ -115,7 +122,7 @@ public class EmailConfirmation {
 
         } catch (AuthenticationFailedException loginFail) {
             System.out.println("Authorized User - Login Authentication Failed");
-            attemptToResendConfirmation(reservation);
+            attemptToResendConfirmation(reservation, null);
         } catch (AddressException e){
             downloadPDF = true;
             System.out.println("Email Address Not Valid - Downloading Ticket");
@@ -124,9 +131,33 @@ public class EmailConfirmation {
         }
     }
 
-    //public void sendTicketPurchaseConfirmation()
+    public void sendTicketPurchaseConfirmation(Purchase purchase)
     {
+        try {
+            MimeMessage message = new MimeMessage(emailSendConfig());
 
+            message.setFrom(new InternetAddress(senderEmail));
+            message.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(purchase.getEmail())));
+            message.setSubject("IndyGo Ticket Purchase Confirmation");
+            message.setText("Hi " + purchase.getFullname() + ",\n\n" +
+                    "Thank you for purchasing a ticket with IndyGo! You purchased a " + purchase.getTicketType() +
+                    " Pass. \nInformation on how to track your bus can be found HERE or plan your trip HERE.\n\n" +
+                    "If you did not purchase this ticket, our contact information can be found HERE.\n\n" +
+                    "Have a question? See if it's answered on our Frequently Asked Questions page.\n\n" +
+                    "We look forward to seeing you!");
+            Transport.send(message);
+
+            System.out.println("Sent!");
+
+        } catch (AuthenticationFailedException loginFail) {
+            System.out.println("Authorized User - Login Authentication Failed");
+            attemptToResendConfirmation(null, purchase);
+        } catch (AddressException e){
+            downloadPDF = true;
+            System.out.println("Email Address Not Valid - Downloading Ticket");
+        } catch (MessagingException exception) {
+            exception.printStackTrace();
+        }
     }
 
 }

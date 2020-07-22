@@ -135,7 +135,6 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 	}
 
 	//Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
-
 	/**
 	 * Sends a string (eventually the data of the reservation) to the server
 	 * @param address
@@ -160,6 +159,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 
 		try {
 			//Send data
+			dataOut.writeUTF("Reservation");
 			dataOut.writeUTF(firstname);
 			dataOut.writeUTF(lastname);
 			dataOut.writeUTF(email);
@@ -214,7 +214,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 	}
 
 	/*
-	 *  Generates PDF with ticket if email confirmation is unvailable - STILL IN PROGRESS
+	 *  Generates PDF with ticket if email confirmation is unavailable
 	 *  Code adapted from BlueApp Software Tutorial: https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
 	 */
 	@RequiresApi(api = Build.VERSION_CODES.KITKAT)

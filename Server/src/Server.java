@@ -73,26 +73,45 @@ public class Server extends EmailConfirmation {
 			out = new DataOutputStream(socket.getOutputStream());
 
 			try {
-				Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
-						in.readUTF(), in.readUTF(), in.readUTF());
-				System.out.println(add(r));
-				System.out.println(reservations.toString());
-				if (r.getEmail().isEmpty()) // Tell the app to download a pdf version
+				// Check for reservation or purchase
+				if (in.readUTF().compareToIgnoreCase("reservation") == 0)
 				{
-					downloadPDF = true;
-				} else // Send email confirmation
-				{
-					promptAuthorizedUserEmailCredentials();
-					sendReservationConfirmation(r);
+					Reservation r = new Reservation(in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(), in.readUTF(),
+							in.readUTF(), in.readUTF(), in.readUTF());
+					System.out.println(add(r));
+					System.out.println(reservations.toString());
+					if (r.getEmail().isEmpty()) // Tell the app to download a pdf version
+					{
+						downloadPDF = true;
+					}
+					else // Send email confirmation
+					{
+						promptAuthorizedUserEmailCredentials();
+						sendReservationConfirmation(r);
+					}
 				}
-				if (downloadPDF == true) {
+				else
+				{
+					Purchase p = new Purchase(in.readUTF(), in.readUTF(), in.readUTF());
+					if (p.getEmail().isEmpty()) // Tell the app to download a pdf version
+					{
+						downloadPDF = true;
+					}
+					else {
+						// Send email confirmation
+						promptAuthorizedUserEmailCredentials();
+						sendTicketPurchaseConfirmation(p);
+					}
+				}
+				if (downloadPDF == true)
+				{
 					out.writeUTF("Download");
+					System.out.println("Downloading ticket to device");
 				}
 				out.writeUTF("TicketProcessed");
 			} catch (IOException i) {
 				System.out.println(i);
 			}
-
 			System.out.println("Closing connection");
 
 			// close connection
