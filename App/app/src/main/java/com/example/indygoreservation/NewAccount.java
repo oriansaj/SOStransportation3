@@ -18,7 +18,9 @@ public class NewAccount extends ToolbarActivity {
         super.displayToolbar(true);
     }
 
-    /** Called when the user taps the Create Account button. Stores entered data and sends to selection screen */
+    /**
+     * Called when the user taps the Create Account button. Stores entered data and sends to selection screen
+     */
     public void create(View view) {
         Settings.setLoginStatus(true);
         EditText usernameBox = (EditText) findViewById(R.id.editTextTextPersonName3);
@@ -40,8 +42,8 @@ public class NewAccount extends ToolbarActivity {
         String phone = phoneBox.getText().toString();
         Settings.setPhone(phone);
         //Make sure password equals confirm password, then update database
-        if(pass.equals(confirmPass)) {
-            updateDB(username,pass,firstname,lastname,email,phone);
+        if (pass.equals(confirmPass)) {
+            updateDB(username, pass, firstname, lastname, email, phone);
         }
         Intent intent = new Intent(this, SelectionScreen.class);
         startActivity(intent);
@@ -49,6 +51,7 @@ public class NewAccount extends ToolbarActivity {
 
     /**
      * Connects to and updates a mySQL database. We bean implementing this, but not fully. This would be a feature for a full release
+     *
      * @param username
      * @param password
      * @param first

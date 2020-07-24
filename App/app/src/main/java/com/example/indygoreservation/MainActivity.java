@@ -13,7 +13,9 @@ public class MainActivity extends ToolbarActivity {
         super.displayToolbar(false);
     }
 
-    /** Called when the user taps the Login button. Goes to selection screen and stores dummy data. */
+    /**
+     * Called when the user taps the Login button. Goes to selection screen and stores dummy data.
+     */
     public void login(View view) {
         Settings.setLoginStatus(true);
         Settings.setFirstname("Example");
@@ -24,13 +26,17 @@ public class MainActivity extends ToolbarActivity {
         startActivity(intent);
     }
 
-    /** Called when the user taps the Guest button. Sends to screen explaining guest status */
+    /**
+     * Called when the user taps the Guest button. Sends to screen explaining guest status
+     */
     public void oneTimePurchase(View view) {
         Intent intent = new Intent(this, OneTimePurchaseScreen.class);
         startActivity(intent);
     }
 
-    /** Called when the user taps the New Account button. Sends to new account page */
+    /**
+     * Called when the user taps the New Account button. Sends to new account page
+     */
     public void create(View view) {
         Intent intent = new Intent(this, NewAccount.class);
         startActivity(intent);

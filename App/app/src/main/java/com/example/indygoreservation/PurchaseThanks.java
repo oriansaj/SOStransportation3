@@ -13,7 +13,9 @@ public class PurchaseThanks extends ToolbarActivity {
         super.displayToolbar(true);
     }
 
-    /** Called when the user taps the logout button. Clears all data and returns to main screen **/
+    /**
+     * Called when the user taps the logout button. Clears all data and returns to main screen
+     **/
     public void backToMain(View view) {
         Settings.setLoginStatus(false);
         Settings.setFirstname("");

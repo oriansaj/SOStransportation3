@@ -38,14 +38,16 @@ public class PurchaseScreen extends ToolbarActivity {
         super.displayToolbar(true);
 
         //Hides ad based on settings
-        if(!Settings.getShowAds()) {
+        if (!Settings.getShowAds()) {
             TextView ad = (TextView) findViewById(R.id.textView5);
             ad.setVisibility(View.INVISIBLE);
             ad.setHeight(0);
         }
     }
 
-    /** Called when the user taps the 'Buy Now' button. Makes sure all information is entered, and sends the data to the server.**/
+    /**
+     * Called when the user taps the 'Buy Now' button. Makes sure all information is entered, and sends the data to the server.
+     **/
     public void purchase(View view) {
         String emptyField = "";
         final String fullName;
@@ -68,26 +70,20 @@ public class PurchaseScreen extends ToolbarActivity {
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         RadioButton radioButton;
 
-        if (cardNum.isEmpty())
-        {
+        if (cardNum.isEmpty()) {
             emptyField = "Card number has not been entered";
-        } else if (cvc.isEmpty())
-        {
+        } else if (cvc.isEmpty()) {
             emptyField = "CVC has not been entered";
-        } else if (expDate.isEmpty())
-        {
+        } else if (expDate.isEmpty()) {
             emptyField = "Expiration date has not been entered";
-        } else if (fullName.isEmpty())
-        {
+        } else if (fullName.isEmpty()) {
             emptyField = "Name has not been entered";
         }
 
-        if (radioGroup.getCheckedRadioButtonId() == -1)
-        {
+        if (radioGroup.getCheckedRadioButtonId() == -1) {
             emptyField = "Ticket has not been selected";
             ticketType = "";
-        }
-        else {
+        } else {
             if (radioGroup.getCheckedRadioButtonId() == R.id.radioButton) {
                 radioButton = (RadioButton) findViewById(R.id.radioButton);
             } else if (radioGroup.getCheckedRadioButtonId() == R.id.radioButton2) {
@@ -104,14 +100,13 @@ public class PurchaseScreen extends ToolbarActivity {
             ticketType = radioButton.getText().toString();
         }
 
-        if (!emptyField.isEmpty())
-        {
+        if (!emptyField.isEmpty()) {
             Snackbar snackbar = Snackbar.make(view, emptyField, Snackbar.LENGTH_LONG);
             snackbar.show();
             return;
         }
 
-        if(Settings.getLoginStatus()) {
+        if (Settings.getLoginStatus()) {
             email = Settings.getEmail();
         } else {
             email = "";
@@ -120,7 +115,7 @@ public class PurchaseScreen extends ToolbarActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
-                try  {
+                try {
                     sendRequest("10.0.2.2", 5000, fullName, email, ticketType, view);
                 } catch (Exception e) {
                     System.out.println("In button: " + e);
@@ -134,8 +129,10 @@ public class PurchaseScreen extends ToolbarActivity {
     }
 
     //Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
+
     /**
      * Sends a the data of the purchase to the server and determines whether or not to download the confirmation as a PDF
+     *
      * @param address
      * @param port
      */
@@ -154,38 +151,34 @@ public class PurchaseScreen extends ToolbarActivity {
             dataOut = new DataOutputStream(socket.getOutputStream());
             // gets data back from server
             dataIn = new DataInputStream(socket.getInputStream());
-        } catch(Exception e) {System.out.println("In connect: " + e);}
+        } catch (Exception e) {
+            System.out.println("In connect: " + e);
+        }
 
         try {
             dataOut.writeUTF("Purchase");
             dataOut.writeUTF(fullname);
             dataOut.writeUTF(email);
             dataOut.writeUTF(ticketType);
-        } catch(Exception e) {System.out.println("Failed to send");}
+        } catch (Exception e) {
+            System.out.println("Failed to send");
+        }
 
-        do
-        {
+        do {
             try {
                 String input = dataIn.readUTF();
-                if (input == null)
-                {
+                if (input == null) {
                     continue;
-                }
-                else if (input.compareTo("Download") == 0)
-                {
+                } else if (input.compareTo("Download") == 0) {
                     downloadPDF = true;
                     break;
-                }
-                else if (input.compareTo("TicketProcessed") != 0)
-                {
+                } else if (input.compareTo("TicketProcessed") != 0) {
                     break;
                 }
-            } catch (EOFException e)
-            {
+            } catch (EOFException e) {
                 System.out.println(e);
                 break;
-            } catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 System.out.println(ex);
                 break;
             }
@@ -197,10 +190,11 @@ public class PurchaseScreen extends ToolbarActivity {
             dataOut.close();
             dataIn.close();
             socket.close();
-        } catch(Exception e) {System.out.println("Failed to close");}
+        } catch (Exception e) {
+            System.out.println("Failed to close");
+        }
 
-        if (downloadPDF == true)
-        {
+        if (downloadPDF == true) {
             downloadTicket(fullname, ticketType, view);
         }
     }
@@ -210,8 +204,7 @@ public class PurchaseScreen extends ToolbarActivity {
      *  Code adapted from BlueApp Software Tutorial: https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void downloadTicket(String fullName, String ticketType, View view)
-    {
+    public void downloadTicket(String fullName, String ticketType, View view) {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
         PdfDocument ticket = new PdfDocument();
@@ -239,8 +232,7 @@ public class PurchaseScreen extends ToolbarActivity {
         File file = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/IndyGo-PurchaseConfirmation.pdf"));
         try {
             ticket.writeTo(new FileOutputStream(file));
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println(e);
         }
         ticket.close();

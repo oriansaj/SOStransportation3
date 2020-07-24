@@ -18,17 +18,13 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (Settings.getSettingsPageActive() == true)
-        {
+        if (Settings.getSettingsPageActive() == true) {
             toolbar.findViewById(R.id.settings).setVisibility(View.INVISIBLE);
-        }
-        else
-        {
+        } else {
             toolbar.findViewById(R.id.settings).setVisibility(View.VISIBLE);
         }
 
-        if (displayBackArrow == true)
-        {
+        if (displayBackArrow == true) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -39,7 +35,9 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         }
     }
 
-    /** Called when the user taps the Settings button. Sends to settings page */
+    /**
+     * Called when the user taps the Settings button. Sends to settings page
+     */
     public void settings(View view) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);

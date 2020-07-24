@@ -14,20 +14,24 @@ public class OneTimePurchaseScreen extends ToolbarActivity {
         super.displayToolbar(true);
 
         //Hides ad based on settings
-        if(!Settings.getShowAds()) {
+        if (!Settings.getShowAds()) {
             TextView ad = (TextView) findViewById(R.id.textView4);
             ad.setVisibility(View.INVISIBLE);
             ad.setHeight(0);
         }
     }
 
-    /** Called when the user taps the No button. Returns to main screen */
+    /**
+     * Called when the user taps the No button. Returns to main screen
+     */
     public void no(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    /** Called when the user taps the Yes button. Sends to selection screen */
+    /**
+     * Called when the user taps the Yes button. Sends to selection screen
+     */
     public void yes(View view) {
         Settings.setLoginStatus(false);
         Intent intent = new Intent(this, SelectionScreen.class);
