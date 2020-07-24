@@ -21,6 +21,9 @@ Also, you will need to install an emulator through Android Studio, to simulate r
 Due to the nature of the app, most testing was done visually. We ran the app and made sure everything did what it was intended to do (i.e. buttons sent you to the correct screen). We also made significant use of print statements, to show where something might be failing, or what data was being used. For testing our algorithms, like server capacity, we used exhaustive values (including edge cases) and tracked the state of the system, again with print statements. If we had more time, we would have liked to have written unit tests, but we did what we could.
 
 ### Tools
+* Java mail API - This allowed for easy integration into our app, and allowed for a convenient way to send confirmations in a way that was also familiar to the user.
+* Android PDF functionality - This allowed for an easy way to send confirmations in a way that ensures the user will recieve them. They may not always supply an email, and something can go wrong with the server, but they will always be using the app on a device with a file system.
+* Java Socket library - This was a quick and simple way to allow the app and server to connect. Our priority in this project was building a working prototype, not a perfect product ready for a full release, so we used the easiest solution. Obviously, in a complete version, we would use something more secure.
 
 ### Potential Bugs
 * If the server program is not running, nothing will happen when you try to reserve or purchase a ticket. It must be running locally.
