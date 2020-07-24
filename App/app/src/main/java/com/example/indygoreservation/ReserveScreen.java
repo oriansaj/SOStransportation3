@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.pdf.PdfDocument;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -87,7 +85,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 		adapterView.getItemAtPosition(1);
 	}
 
-	/** Called when the user taps the Reserve button */
+	/** Called when the user taps the Reserve button. Sends entered data to the server */
 	public void reserve(View view) {
 		final String firstname;
 		final String lastname;
@@ -139,7 +137,7 @@ public class ReserveScreen extends ToolbarActivity implements AdapterView.OnItem
 
 	//Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
 	/**
-	 * Sends the data of the reservation to the server
+	 * Sends the data of the reservation to the server, and determines whether or not to download the confirmation as a PDF
 	 * @param address
 	 * @param port
 	 */

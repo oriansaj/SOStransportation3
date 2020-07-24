@@ -45,6 +45,7 @@ public class PurchaseScreen extends ToolbarActivity {
         }
     }
 
+    /** Called when the user taps the 'Buy Now' button. Makes sure all information is entered, and sends the data to the server.**/
     public void purchase(View view) {
         String emptyField = "";
         final String fullName;
@@ -134,7 +135,7 @@ public class PurchaseScreen extends ToolbarActivity {
 
     //Server stuff below here. Code adapted from geeksforgeeks.org (https://www.geeksforgeeks.org/socket-programming-in-java/)
     /**
-     * Sends a the data of the purchase to the server
+     * Sends a the data of the purchase to the server and determines whether or not to download the confirmation as a PDF
      * @param address
      * @param port
      */
@@ -205,7 +206,7 @@ public class PurchaseScreen extends ToolbarActivity {
     }
 
     /*
-     *  Generates PDF with ticket if email confirmation is unvailable - STILL IN PROGRESS
+     *  Generates PDF with ticket if email confirmation is unvailable
      *  Code adapted from BlueApp Software Tutorial: https://www.blueappsoftware.com/how-to-create-pdf-file-in-android/
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
