@@ -1,5 +1,8 @@
 # IndyGo Reservation App
 
+### Notes
+This application was submitted for the TechPoint S.O.S. Challenge, Summer 2020, as a solution to the transportation challenge.
+
 ### Prerequisites
 You will need the following items installed on your system:
 * [Android Studio](https://developer.android.com/studio)
